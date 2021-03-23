@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, jsonify
 from datetime import datetime
 from model import db
 
@@ -21,6 +21,18 @@ def cards(index):
                                  card=card,
                                  index=index,
                                  max_index=len(db)-1)
+    except IndexError:
+        abort(404)
+
+
+@app.route("/api/card/")
+def api_card_list():
+    return jsonify(db)
+
+@app.route('/api/card/<int:index>')
+def api_card_detail(index):
+    try:
+        return db[index]
     except IndexError:
         abort(404)
 

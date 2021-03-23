@@ -17,5 +17,16 @@
     Question: {{card.question}}
     <br />
     Answer: {{card.answer}}
+    <p>
+        <a href="{{ url_for('welcome') }}"> Home</a> <br />
+        <button>
+            {% if index < max_index %}
+                <a href="{{ url_for('cards', index=index+1) }}"> Next Card </a>
+            {% else %}
+                <a href="{{ url_for('cards', index=0) }}">  Start Over</a>
+            {% endif %}
+        </button>
+    </p>
+
 </body>
 </html>

@@ -18,8 +18,13 @@
         <em>Gettings started with Flask</em>
     </p>
 
+    <h2> Flash cards</h2>
     <p>
-        {{message}}
+        {% for card in cards %}
+            <li>
+                <a href="{{ url_for('cards', index=loop.index0) }}"> {{ card.question }}</a>
+            </li>
+        {% endfor %}
     </p>
 
     <img src="/static/bass.jpg" />

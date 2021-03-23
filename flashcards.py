@@ -1,6 +1,7 @@
-from flask import Flask, render_template, abort, jsonify
+from flask import (Flask, render_template, abort, jsonify, request,
+                    redirect, url_for)
 from datetime import datetime
-from model import db
+from model import db, save_db
 
 app = Flask(__name__)
 
@@ -35,6 +36,23 @@ def api_card_detail(index):
         return db[index]
     except IndexError:
         abort(404)
+
+@app.route("/add_card", methods=["GET", "POST"])
+def add_card():
+    if request.method == "POST":
+        #form has been submited, process data
+        card = {"question": request.form['question'],
+                "answer": request.form['answer']}
+        db.append(card)
+        save_db()
+        return redirect(url_for('welcome'))
+    else:
+        app.logger.info("test")
+        return render_template("add_card.html")
+
+
+
+# Everything below is just test routes and not pertinent to bogus app
 
 @app.route("/date")
 def date():

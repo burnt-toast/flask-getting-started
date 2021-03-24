@@ -50,8 +50,17 @@ def add_card():
         app.logger.info("test")
         return render_template("add_card.html")
 
-
-
+@app.route("/remove_card/<int:index>", methods=["GET", "POST"])
+def remove_card(index):
+    try:
+        if request.method == "POST":
+            del db[index]
+            save_db()
+            return redirect(url_for('welcome'))
+        else:
+            return render_template("remove_card.html", card = db[index])
+    except IndexError:
+        abort(404)
 # Everything below is just test routes and not pertinent to bogus app
 
 @app.route("/date")

@@ -1,18 +1,8 @@
-<!doctype html>
+{% extends "base.html" %}
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+{% block title %} Welcome {% endblock %}
 
-  <title>Flask getting started</title>
-  <meta name="description" content="Flask getting started">
-  <meta name="author" content="SitePoint">
-
- <!--  <link rel="stylesheet" href="css/styles.css?v=1.0">-->
-
-</head>
-
-<body>
+{% block content %}
     <h1>Welcome to my page!</h1>
     <p>This is a demo application
         <em>Gettings started with Flask</em>
@@ -29,6 +19,4 @@
 
     <img src="/static/bass.jpg" />
 
- <!-- <script src="js/scripts.js"></script>-->
-</body>
-</html>
+    {% endblock %}

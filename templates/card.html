@@ -1,18 +1,8 @@
-<!doctype html>
+{% extends "base.html" %}
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+{% block title %} Welcome {% endblock %}
 
-  <title>Flask getting started</title>
-  <meta name="description" content="Flask getting started">
-  <meta name="author" content="SitePoint">
-
- <!--  <link rel="stylesheet" href="css/styles.css?v=1.0">-->
-
-</head>
-
-<body>
+{% block content %}
     <h1>Flash cards!</h1>
     Question: {{card.question}}
     <br />
@@ -27,6 +17,6 @@
             {% endif %}
         </button>
     </p>
+    <a href="{{ url_for('remove_card', index=index) }}">Remove Card</a> 
 
-</body>
-</html>
+{% endblock %}

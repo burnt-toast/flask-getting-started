@@ -1,18 +1,8 @@
-<!doctype html>
+{% extends "base.html" %}
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+{% block title %} Add Card {% endblock %}
 
-  <title>Add card</title>
-  <meta name="description" content="Flask getting started">
-  <meta name="author" content="SitePoint">
-
- <!--  <link rel="stylesheet" href="css/styles.css?v=1.0">-->
-
-</head>
-
-<body>
+{% block content %}
     <h1>Add a card</h1>
     <form method="POST">
         <p>
@@ -26,6 +16,4 @@
 
          <button type="submit"> Create</button>
     </form>
-
-</body>
-</html>
+{% endblock %}
